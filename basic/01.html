@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>React Study</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+<div id="root">
+</div>
+<script type="text/babel">
+  class Codelab extends React.Component {
+    render() {
+      return (
+        <div>Codelab</div>
+      );
+    }
+  }
+
+  class App extends React.Component {
+    render() {
+      return (
+        <Codelab/>
+      )
+    }
+  }
+
+  // 우리가 만든 컴포넌트를 랜더링할때 사용
+  // 첫번째 인자: 랜더링할 JSX형태 코드
+  // 두번째 인자: 컴포넌트를 랜더링할 엘리먼트
+  ReactDOM.render(
+    <App/>,
+    document.getElementById('root')
+  );
+</script>
+</body>
+</html>
