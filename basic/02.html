@@ -1,0 +1,53 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>React Study</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+<div id="root">
+</div>
+<script type="text/babel">
+  class Codelab extends React.Component {
+    render() {
+
+      return (
+        <div>
+          <h1>Hello {this.props.name}</h1>
+          <h2>{this.props.number}</h2>
+          <div>{this.props.children}</div>
+        </div>
+      );
+    }
+  }
+
+  Codelab.propTypes = {
+    name: React.PropTypes.string,
+    number: React.PropTypes.number.isRequired
+  }
+
+  Codelab.defaultProps = {
+    name: 'Unknown'
+  }
+
+  class App extends React.Component {
+    render() {
+      return (
+        <Codelab number={this.props.number}>{this.props.children}</Codelab>
+      )
+    }
+  }
+
+  // 우리가 만든 컴포넌트를 랜더링할때 사용
+  // 첫번째 인자: 랜더링할 JSX형태 코드
+  // 두번째 인자: 컴포넌트를 랜더링할 엘리먼트
+  ReactDOM.render(
+    <App name="minung.han" number={5}>안의 내용이 들어간다</App>,
+    document.getElementById('root')
+  );
+</script>
+</body>
+</html>
