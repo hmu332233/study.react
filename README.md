@@ -51,3 +51,15 @@ $ npm install --save-dev react-hot-loader webpack webpack-dev-server
   - `module`
     - loader를 통해 es2015, react형식을 일반 js형식으로 변환한다.
     - html, css 등 여러 loader가 많음
+    
+### 개발서버 실행 스크립트
+- `package.json`에 다음과 같이 추가한다.
+```
+"scripts": {
+    "dev-server": "webpack-dev-server"
+},
+```
+- 다음과 같은 명령어로 실행할 수 있다.
+```
+$ npm run dev-server
+```
