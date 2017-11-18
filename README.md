@@ -39,7 +39,7 @@ $ npm install --save-dev react-hot-loader webpack webpack-dev-server
 
 ### webpack 설정
 - `webpack.config.js` 파일 생성 
-  - [webpack.config.js](/webpack.config.js) 참고
+  - [webpack.config.js](/project/webpack.config.js) 참고
   - `entry` 파일부터 시작하여 모든 require된 아이들은 재귀적으로 파고들어가 한 곳으로 모아준다. 배열도 가능
   - 이렇게 합친 파일들을 `output` 설정대로 모아 저장한다.
   - `devServer` : 개발서버 셋팅
