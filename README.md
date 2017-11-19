@@ -132,3 +132,9 @@ let changed = update(object, {
   }
 }
 ```
+
+### 참고
+- **prop-types**
+  - 15.5부터는 React.PropTypes를 사용하지 않는다.
+  - prop-types 모듈을 이용해야한다.
+  - 참고 : [reactjs docs](https://reactjs.org/docs/typechecking-with-proptypes.html)

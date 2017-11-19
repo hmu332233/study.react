@@ -1,6 +1,8 @@
 import React from 'react';
 import ContactInfo from './ContactInfo';
 import ContactDetails from './ContactDetails';
+import ContactCreate from './ContactCreate';
+
 import update from 'react-addons-update';
 
 export default class Contact extends React.Component {
@@ -25,13 +27,14 @@ export default class Contact extends React.Component {
       }]
     };
     
-    this.handleChnage = this.handleChnage.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleCreate = this.handleCreate.bind(this);
   }
   
   // input에 입력이 들어올때마다 호출이 되는 함수
   // e {obeject}: event 객체
-  handleChnage(e) {
+  handleChange(e) {
     this.setState({
       keyword: e.target.value
     });
@@ -45,6 +48,18 @@ export default class Contact extends React.Component {
     console.log(key, 'is selected');
   }
   
+  handleCreate(contact) {
+    this.setState({
+      contactData: update(
+        this.state.contactData,
+        {
+          $push: [contact]
+        }
+      )
+    });
+  }
+  
+
   render() {
     const mapToComponents = (data) => {
       data.sort();
@@ -66,12 +81,15 @@ export default class Contact extends React.Component {
           name="keyword"
           placeholder="search"
           value={this.state.keyword}
-          onChange={this.handleChnage}
+          onChange={this.handleChange}
         />
         <div>{mapToComponents(this.state.contactData)}</div>
         <ContactDetails 
 					isSelected={this.state.selectedKey != -1}
 					contact={this.state.contactData[this.state.selectedKey]}
+				/>
+        <ContactCreate
+        	onCreate={this.handleCreate}
 				/>
       </div>
     );
