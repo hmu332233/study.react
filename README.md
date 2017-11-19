@@ -63,3 +63,72 @@ $ npm install --save-dev react-hot-loader webpack webpack-dev-server
 ```
 $ npm run dev-server
 ```
+
+### 부가 설치
+```
+$ npm install --save react-addons-update
+```
+- **immutability-helper**
+  - setState로 객체나 배열을 조금더 쉽게 수정할 수 있게 도와준다.
+  
+```
+import update from 'react-addons-update';
+
+//원소 추가
+this.setState({
+  list: update(
+    this.state.list,
+    {
+      $push: [newObj, newObj2]
+    }
+  )
+});
+//원소 삭제
+this.setState({
+  list: update(
+    this.state.list,
+    {
+      $splice: [[index,1]]
+    }
+  )
+});
+
+//원소 수정
+this.setState({
+  list: update(
+    this.state.list,
+    {
+      [index]: {
+        field: {$set: "value"}
+        field2: {$set: "value"}
+      }
+    }
+  )
+});
+```
+
+```
+//원소 수정 예제
+let object = {
+  a: 1,
+  b: 2,
+  c: {
+    d: 3,
+    e: 4,
+    f {
+      change_this_value: 0,
+      this_stays_same: 6
+    }
+  }
+}
+
+let changed = update(object, {
+  c: {
+    f: {
+      change_this_value: {
+        $set: 5    
+      }
+    }
+  }
+}
+```
