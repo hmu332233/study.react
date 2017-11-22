@@ -15,6 +15,7 @@ class ContactDetails extends React.Component {
     this.handleToggle = this.handleToggle.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
   
   handleToggle() {
@@ -42,6 +43,12 @@ class ContactDetails extends React.Component {
   handleEdit() {
     this.props.onEdit(this.state.name, this.state.phone);
   }
+  //키를 눌렀을때 사용할 이벤트
+  handleKeyPress(e) {
+    if (e.charCode === 13) {
+      this.handleToggle();
+    }
+  }
   
   render() {
     //선택된 아이가 있을 때 출력되는 컴포넌트
@@ -56,7 +63,7 @@ class ContactDetails extends React.Component {
     const edit = (
       <div>
         <input type="text"  name="name" placeholder="name" value={this.state.name} onChange={this.handleChange}/>
-        <input type="text"  name="phone" placeholder="phone" value={this.state.phone} onChange={this.handleChange}/>
+        <input type="text"  name="phone" placeholder="phone" value={this.state.phone} onChange={this.handleChange} onKeyPress={this.handleKeyPress}/>
       </div>
     );
                    
