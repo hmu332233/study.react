@@ -34,6 +34,25 @@ export default class Contact extends React.Component {
     this.handleEdit = this.handleEdit.bind(this);
   }
   
+  //컴포넌트가 DOM위에 생성되기 직전에 실행되는 함수
+  componentWillMount() {
+    const contactData = localStorage.contactData;
+    
+    if(contactData) {
+      this.setState({
+        contactData: JSON.parse(contactData)
+      });
+    }
+  }
+  
+  //컴포넌트가 업데이트 된 후 실행되는 함수
+  componentDidUpdate(prevProps, prevState) {
+    //업데이트 이전 contactData와 현재 contactData가 다르다면
+    if (JSON.stringify(prevState.contactData) != JSON.stringify(this.state.ContactData)) {
+      localStorage.contactData = JSON.stringify(this.state.contactData);
+    }
+  }
+  
   // input에 입력이 들어올때마다 호출이 되는 함수
   // e {obeject}: event 객체
   handleChange(e) {
