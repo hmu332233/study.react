@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Form from './form';
 import registerServiceWorker from './registerServiceWorker';
 
 // ReactDOM.render(<App />, document.getElementById('root'));
@@ -46,7 +46,10 @@ class Page extends React.Component {
 }
 
 ReactDOM.render(
-  <Page />,
+  <div>
+  	<Page />
+  	<Form />
+  </div>,
   document.getElementById('root')
 );
 
