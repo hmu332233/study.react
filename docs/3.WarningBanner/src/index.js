@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Form from './form';
+import Calculator from './Calculator';
 import registerServiceWorker from './registerServiceWorker';
 
 // ReactDOM.render(<App />, document.getElementById('root'));
@@ -49,6 +50,7 @@ ReactDOM.render(
   <div>
   	<Page />
   	<Form />
+  	<Calculator />
   </div>,
   document.getElementById('root')
 );
