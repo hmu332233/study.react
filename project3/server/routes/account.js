@@ -108,11 +108,29 @@ router.post('/signin', function (req, res) {
   res.json({ success: true });
 });
 
+/*
+    GET CURRENT USER INFO GET /api/account/getInfo
+*/
 router.get('/getinfo', function (req, res) {
-  res.json({ success: true });
+  if (typeof req.session.loginInfo === 'undefinded') {
+    return res.status(401).json({
+      error: 1
+    });
+  }
+  
+  res.json({ info: req.session.loginInfo });
 });
 
+/*
+    LOGOUT: POST /api/account/logout
+*/
 router.post('/logout', function (req, res) {
+  req.session.destory(function (err) {
+    if (err) throw err;
+    return res.json({
+      success: true
+    });
+  })
   res.json({ success: true });
 });
 
