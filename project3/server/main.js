@@ -11,16 +11,24 @@ const config = {
   port: 3000
 };
 
+
+
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use('/', express.static(path.join(__dirname, './../public')));
 app.use('/api', api);
+
 /* mongodb connection */
 const db = mongoose.connection;
 db.on('error', console.error);
-db.once('open', () => { console.log('Connected to mongodb server'); });
+// db.once('open', () => { console.log('Connected to mongodb server'); });
 // mongoose.connect('mongodb://username:password@host:port/database=');
-mongoose.connect('mongodb://localhost:27017/memoapp');
+mongoose.connect('mongodb://localhost:27017/memoapp', function (err, client) {
+  console.log('Connected to mongodb server');
+});
+
+
+
 
 /* use session */
 app.use(session({
