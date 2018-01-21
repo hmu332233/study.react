@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3f60a4f63d876bff4e57"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ff9ad350ccafa9700c9d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -22961,7 +22961,7 @@
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(3), RootInstanceProvider = __webpack_require__(11), ReactMount = __webpack_require__(13), React = __webpack_require__(104); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -22991,18 +22991,93 @@
 	  }
 
 	  _createClass(Header, [{
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
+
+	      var loginButton = _react2.default.createElement(
+	        "li",
 	        null,
-	        'Header'
+	        _react2.default.createElement(
+	          "a",
+	          null,
+	          _react2.default.createElement(
+	            "i",
+	            { className: "material-icons" },
+	            "vpn_key"
+	          )
+	        )
+	      );
+
+	      var logoutButton = _react2.default.createElement(
+	        "li",
+	        null,
+	        _react2.default.createElement(
+	          "a",
+	          null,
+	          _react2.default.createElement(
+	            "i",
+	            { className: "material-icons" },
+	            "lock_open"
+	          )
+	        )
+	      );
+
+	      return _react2.default.createElement(
+	        "nav",
+	        null,
+	        _react2.default.createElement(
+	          "div",
+	          { className: "nav-wrapper blue darken-1" },
+	          _react2.default.createElement(
+	            "a",
+	            { className: "brand-logo center" },
+	            "MEMOPAD"
+	          ),
+	          _react2.default.createElement(
+	            "ul",
+	            null,
+	            _react2.default.createElement(
+	              "li",
+	              null,
+	              _react2.default.createElement(
+	                "a",
+	                null,
+	                _react2.default.createElement(
+	                  "i",
+	                  { className: "material-icons" },
+	                  "search"
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "right" },
+	            _react2.default.createElement(
+	              "ul",
+	              null,
+	              this.props.isLoggedIn ? logoutButton : loginButton
+	            )
+	          )
+	        )
 	      );
 	    }
 	  }]);
 
 	  return Header;
 	}(_react2.default.Component);
+
+	Header.propTypes = {
+	  isLoggedIn: _react2.default.PropTypes.bool,
+	  onLogout: _react2.default.PropTypes.func
+	};
+
+	Header.defaultProps = {
+	  isLoggedIn: false,
+	  onLogout: function onLogout() {
+	    console.error('logout function not defined');
+	  }
+	};
 
 	exports.default = Header;
 
