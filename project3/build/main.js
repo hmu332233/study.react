@@ -41,14 +41,15 @@ app.use((0, _morgan2.default)('dev'));
 app.use(_bodyParser2.default.json());
 app.use('/', _express2.default.static(_path2.default.join(__dirname, './../public')));
 app.use('/api', _routes2.default);
+
 /* mongodb connection */
 var db = _mongoose2.default.connection;
 db.on('error', console.error);
-db.once('open', function () {
+// db.once('open', () => { console.log('Connected to mongodb server'); });
+// mongoose.connect('mongodb://username:password@host:port/database=');
+_mongoose2.default.connect('mongodb://localhost:27017/memoapp', function (err, client) {
   console.log('Connected to mongodb server');
 });
-// mongoose.connect('mongodb://username:password@host:port/database=');
-_mongoose2.default.connect('mongodb://localhost:27017/memoapp');
 
 /* use session */
 app.use((0, _expressSession2.default)({
