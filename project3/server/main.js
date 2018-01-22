@@ -16,8 +16,6 @@ const config = {
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use('/', express.static(path.join(__dirname, './../public')));
-app.use('/api', api);
-
 /* mongodb connection */
 const db = mongoose.connection;
 db.on('error', console.error);
@@ -45,6 +43,12 @@ app.use(function(err, req, res, next) {
 
 app.get('/hello', function (req, res) {
   return res.send('Hello CodeLab');
+});
+
+app.use('/api', api);
+/* support client-side routing */
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, './../public/index.html'));
 });
 
 app.listen(config.port, function () {

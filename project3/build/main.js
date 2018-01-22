@@ -40,8 +40,6 @@ var config = {
 app.use((0, _morgan2.default)('dev'));
 app.use(_bodyParser2.default.json());
 app.use('/', _express2.default.static(_path2.default.join(__dirname, './../public')));
-app.use('/api', _routes2.default);
-
 /* mongodb connection */
 var db = _mongoose2.default.connection;
 db.on('error', console.error);
@@ -66,6 +64,12 @@ app.use(function (err, req, res, next) {
 
 app.get('/hello', function (req, res) {
   return res.send('Hello CodeLab');
+});
+
+app.use('/api', _routes2.default);
+/* support client-side routing */
+app.get('*', function (req, res) {
+  res.sendFile(_path2.default.resolve(__dirname, './../public/index.html'));
 });
 
 app.listen(config.port, function () {
