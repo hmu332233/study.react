@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "98e07470c123af198d78"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "41c8277a7849c0460a85"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -584,7 +584,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1);
-	module.exports = __webpack_require__(246);
+	module.exports = __webpack_require__(247);
 
 
 /***/ }),
@@ -26482,15 +26482,15 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _Home = __webpack_require__(243);
+	var _Home = __webpack_require__(244);
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _Login = __webpack_require__(244);
+	var _Login = __webpack_require__(245);
 
 	var _Login2 = _interopRequireDefault(_Login);
 
-	var _Register = __webpack_require__(245);
+	var _Register = __webpack_require__(246);
 
 	var _Register2 = _interopRequireDefault(_Register);
 
@@ -26573,15 +26573,20 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.Header = undefined;
+	exports.Authentication = exports.Header = undefined;
 
 	var _Header = __webpack_require__(239);
 
 	var _Header2 = _interopRequireDefault(_Header);
 
+	var _Authentication = __webpack_require__(243);
+
+	var _Authentication2 = _interopRequireDefault(_Authentication);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.Header = _Header2.default;
+	exports.Authentication = _Authentication2.default;
 
 	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(240); if (makeExportsHot(module, __webpack_require__(104))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
@@ -26592,7 +26597,7 @@
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(3), RootInstanceProvider = __webpack_require__(11), ReactMount = __webpack_require__(13), React = __webpack_require__(104); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -26603,6 +26608,8 @@
 	var _react = __webpack_require__(104);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouterDom = __webpack_require__(196);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26622,70 +26629,70 @@
 	  }
 
 	  _createClass(Header, [{
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
 
 	      var loginButton = _react2.default.createElement(
-	        "li",
+	        'li',
 	        null,
 	        _react2.default.createElement(
-	          "a",
-	          null,
+	          _reactRouterDom.Link,
+	          { to: '/login' },
 	          _react2.default.createElement(
-	            "i",
-	            { className: "material-icons" },
-	            "vpn_key"
+	            'i',
+	            { className: 'material-icons' },
+	            'vpn_key'
 	          )
 	        )
 	      );
 
 	      var logoutButton = _react2.default.createElement(
-	        "li",
+	        'li',
 	        null,
 	        _react2.default.createElement(
-	          "a",
+	          'a',
 	          null,
 	          _react2.default.createElement(
-	            "i",
-	            { className: "material-icons" },
-	            "lock_open"
+	            'i',
+	            { className: 'material-icons' },
+	            'lock_open'
 	          )
 	        )
 	      );
 
 	      return _react2.default.createElement(
-	        "nav",
+	        'nav',
 	        null,
 	        _react2.default.createElement(
-	          "div",
-	          { className: "nav-wrapper blue darken-1" },
+	          'div',
+	          { className: 'nav-wrapper blue darken-1' },
 	          _react2.default.createElement(
-	            "a",
-	            { className: "brand-logo center" },
-	            "MEMOPAD"
+	            _reactRouterDom.Link,
+	            { to: '/', className: 'brand-logo center' },
+	            'MEMOPAD'
 	          ),
 	          _react2.default.createElement(
-	            "ul",
+	            'ul',
 	            null,
 	            _react2.default.createElement(
-	              "li",
+	              'li',
 	              null,
 	              _react2.default.createElement(
-	                "a",
+	                'a',
 	                null,
 	                _react2.default.createElement(
-	                  "i",
-	                  { className: "material-icons" },
-	                  "search"
+	                  'i',
+	                  { className: 'material-icons' },
+	                  'search'
 	                )
 	              )
 	            )
 	          ),
 	          _react2.default.createElement(
-	            "div",
-	            { className: "right" },
+	            'div',
+	            { className: 'right' },
 	            _react2.default.createElement(
-	              "ul",
+	              'ul',
 	              null,
 	              this.props.isLoggedIn ? logoutButton : loginButton
 	            )
@@ -26860,6 +26867,199 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRouterDom = __webpack_require__(196);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Authentication = function (_React$Component) {
+	    _inherits(Authentication, _React$Component);
+
+	    function Authentication(props) {
+	        _classCallCheck(this, Authentication);
+
+	        var _this = _possibleConstructorReturn(this, (Authentication.__proto__ || Object.getPrototypeOf(Authentication)).call(this, props));
+
+	        _this.state = {
+	            username: "",
+	            password: ""
+	        };
+
+	        _this.handleChange = _this.handleChange.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(Authentication, [{
+	        key: 'handleChange',
+	        value: function handleChange(e) {
+	            var nextState = {};
+	            nextState[e.target.name] = e.target.value;
+	            this.setState(nextState);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+
+	            var inputBoxes = _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'input-field col s12 username' },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'Username'
+	                    ),
+	                    _react2.default.createElement('input', {
+	                        name: 'username',
+	                        type: 'text',
+	                        className: 'validate',
+	                        onChange: this.handleChange,
+	                        value: this.state.username })
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'input-field col s12' },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'Password'
+	                    ),
+	                    _react2.default.createElement('input', {
+	                        name: 'password',
+	                        type: 'password',
+	                        className: 'validate',
+	                        onChange: this.handleChange,
+	                        value: this.state.password })
+	                )
+	            );
+
+	            var loginView = _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'card-content' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'row' },
+	                        inputBoxes,
+	                        _react2.default.createElement(
+	                            'a',
+	                            { className: 'waves-effect waves-light btn' },
+	                            'SUBMIT'
+	                        )
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'footer' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'card-content' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'right' },
+	                            'New Here? ',
+	                            _react2.default.createElement(
+	                                _reactRouterDom.Link,
+	                                { to: '/register' },
+	                                'Create an account'
+	                            )
+	                        )
+	                    )
+	                )
+	            );
+
+	            var registerView = _react2.default.createElement(
+	                'div',
+	                { className: 'card-content' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'row' },
+	                    inputBoxes,
+	                    _react2.default.createElement(
+	                        'a',
+	                        { className: 'waves-effect waves-light btn' },
+	                        'CREATE'
+	                    )
+	                )
+	            );
+
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'container auth' },
+	                _react2.default.createElement(
+	                    _reactRouterDom.Link,
+	                    { className: 'logo', to: '/' },
+	                    'MEMOPAD'
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'card' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'header blue white-text center' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'card-content' },
+	                            this.props.mode ? "LOGIN" : "REGISTER"
+	                        )
+	                    ),
+	                    this.props.mode ? loginView : registerView
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Authentication;
+	}(_react2.default.Component);
+
+	Authentication.propTypes = {
+	    mode: _react2.default.PropTypes.bool,
+	    onLogin: _react2.default.PropTypes.func,
+	    onRegister: _react2.default.PropTypes.func
+	};
+
+	Authentication.defaultProps = {
+	    mode: true,
+	    onLogin: function onLogin(id, pw) {
+	        console.error("login function not defined");
+	    },
+	    onRegister: function onRegister(id, pw) {
+	        console.error("register function not defined");
+	    }
+	};
+
+	exports.default = Authentication;
+
+	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(240); if (makeExportsHot(module, __webpack_require__(104))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "Authentication.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
+
+/***/ }),
+/* 244 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(3), RootInstanceProvider = __webpack_require__(11), ReactMount = __webpack_require__(13), React = __webpack_require__(104); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(104);
+
+	var _react2 = _interopRequireDefault(_react);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26897,7 +27097,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
 
 /***/ }),
-/* 244 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(3), RootInstanceProvider = __webpack_require__(11), ReactMount = __webpack_require__(13), React = __webpack_require__(104); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -26913,6 +27113,8 @@
 	var _react = __webpack_require__(104);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _components = __webpack_require__(238);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26937,7 +27139,7 @@
 	            return _react2.default.createElement(
 	                'div',
 	                null,
-	                'Login'
+	                _react2.default.createElement(_components.Authentication, { mode: true })
 	            );
 	        }
 	    }]);
@@ -26951,7 +27153,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
 
 /***/ }),
-/* 245 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(3), RootInstanceProvider = __webpack_require__(11), ReactMount = __webpack_require__(13), React = __webpack_require__(104); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -26967,6 +27169,8 @@
 	var _react = __webpack_require__(104);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _components = __webpack_require__(238);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26991,7 +27195,7 @@
 	            return _react2.default.createElement(
 	                'div',
 	                null,
-	                'Register'
+	                _react2.default.createElement(_components.Authentication, { mode: false })
 	            );
 	        }
 	    }]);
@@ -27005,13 +27209,13 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
 
 /***/ }),
-/* 246 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(247);
+	var content = __webpack_require__(248);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -27019,14 +27223,14 @@
 	var options = {"hmr":true}
 	options.transform = transform
 	// add the styles to the DOM
-	var update = __webpack_require__(249)(content, options);
+	var update = __webpack_require__(250)(content, options);
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(247, function() {
-				var newContent = __webpack_require__(247);
+			module.hot.accept(248, function() {
+				var newContent = __webpack_require__(248);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -27036,21 +27240,21 @@
 	}
 
 /***/ }),
-/* 247 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(248)(false);
+	exports = module.exports = __webpack_require__(249)(false);
 	// imports
 
 
 	// module
-	exports.push([module.id, "body {\n    background-color: #ECEFF1;\n}", ""]);
+	exports.push([module.id, "body {\n    background-color: #ECEFF1;\n}\n\n/* Authentication */\n.auth {\n  margin-top: 50px;\n    text-align: center;\n}\n\n.logo {\n    text-align: center;\n    font-weight: 100;\n    font-size: 80px;\n    -webkit-user-select: none;\n    /* Chrome all / Safari all */\n    -moz-user-select: none;\n    /* Firefox all */\n    -ms-user-select: none;\n    /* IE 10+ */\n    user-select: none;\n    /* Likely future */\n}\n\na.logo {\n    color: #5B5B5B;\n}\n\na {\n    cursor: pointer;\n}\n\n.auth .card {\n    width: 400px;\n    margin: 0 auto;\n}\n\n@media screen and (max-width: 480px) {\n  .auth .card {\n    width: 100%;\n  }\n\n  .logo {\n    font-size: 60px;\n  }\n}\n\n\n\n.auth .header {\n    font-size: 18px;\n}\n\n.auth .row {\n    margin-bottom: 0px;\n}\n\n.auth .username {\n  margin-top: 0px;\n}\n\n.auth .btn {\n    width: 90%;\n}\n\n.auth .footer {\n    border-top: 1px solid #E9E9E9;\n    padding-bottom: 21px;\n}", ""]);
 
 	// exports
 
 
 /***/ }),
-/* 248 */
+/* 249 */
 /***/ (function(module, exports) {
 
 	/*
@@ -27132,7 +27336,7 @@
 
 
 /***/ }),
-/* 249 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -27188,7 +27392,7 @@
 	var	singletonCounter = 0;
 	var	stylesInsertedAtTop = [];
 
-	var	fixUrls = __webpack_require__(250);
+	var	fixUrls = __webpack_require__(251);
 
 	module.exports = function(list, options) {
 		if (false) {
@@ -27504,7 +27708,7 @@
 
 
 /***/ }),
-/* 250 */
+/* 251 */
 /***/ (function(module, exports) {
 
 	
