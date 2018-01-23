@@ -14,12 +14,14 @@ const store = createStore(reducers, applyMiddleware(thunk));
 
 const rootElement = document.getElementById('root');
 ReactDOM.render(
-  <BrowserRouter>
-  	<App>
-  		<Route exact path="/" component={Home}/>
-	  	<Route path="/login" component={Login}/>
-  		<Route path="/register" component={Register}/>
-  	</App>
-  </BrowserRouter>, 
+  <Provider store={store}>
+    <BrowserRouter history={browserHistory}>
+      <App>
+        <Route exact path="/" component={Home}/>
+        <Route path="/login" component={Login}/>
+        <Route path="/register" component={Register}/>
+      </App>
+    </BrowserRouter>
+  </Provider>, 
   rootElement
 );

@@ -85,7 +85,7 @@ router.post('/signin', function (req, res) {
   }
 
   // FIND THE USER BY USERNAME
-  _account2.default.findOne({ username: req.body.username }, function (err, accout) {
+  _account2.default.findOne({ username: req.body.username }, function (err, account) {
     if (err) throw err;
 
     // CHECK ACCOUNT EXISTANCY
@@ -116,8 +116,6 @@ router.post('/signin', function (req, res) {
       success: true
     });
   });
-
-  res.json({ success: true });
 });
 
 /*
