@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "67d30767e7bc7a7c9ae4"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "45debb167e2cf14fc39a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -26915,6 +26915,7 @@
 
 	        _this.handleChange = _this.handleChange.bind(_this);
 	        _this.handleLogin = _this.handleLogin.bind(_this);
+	        _this.handleRegister = _this.handleRegister.bind(_this);
 	        return _this;
 	    }
 
@@ -26934,6 +26935,23 @@
 	            this.props.onLogin(id, pw).then(function (success) {
 	                if (!success) {
 	                    this.setState({
+	                        password: ''
+	                    });
+	                }
+	            });
+	        }
+	    }, {
+	        key: 'handleRegister',
+	        value: function handleRegister() {
+	            var _this2 = this;
+
+	            var id = this.state.username;
+	            var pw = this.state.password;
+
+	            this.props.onRegister(id, pw).then(function (result) {
+	                if (!result) {
+	                    _this2.setState({
+	                        username: '',
 	                        password: ''
 	                    });
 	                }
@@ -27025,7 +27043,9 @@
 	                    inputBoxes,
 	                    _react2.default.createElement(
 	                        'a',
-	                        { className: 'waves-effect waves-light btn' },
+	                        { className: 'waves-effect waves-light btn',
+	                            onClick: this.handleRegister
+	                        },
 	                        'CREATE'
 	                    )
 	                )
@@ -29411,6 +29431,10 @@
 	exports.login = login;
 	exports.loginSuccess = loginSuccess;
 	exports.loginFailure = loginFailure;
+	exports.registerRequest = registerRequest;
+	exports.register = register;
+	exports.registerSuccess = registerSuccess;
+	exports.registerFailure = registerFailure;
 
 	var _ActionTypes = __webpack_require__(282);
 
@@ -29460,6 +29484,39 @@
 	  };
 	}
 
+	/* REGISTER */
+	function registerRequest(username, password) {
+	  return function (dispatch) {
+	    // Inform Register API is starting
+	    dispatch(register());
+
+	    return _axios2.default.post('/api/account/signup', { username: username, password: password }).then(function (response) {
+	      dispatch(registerSuccess());
+	    }).catch(function (error) {
+	      dispatch(registerFailure(error.response.data.code));
+	    });
+	  };
+	}
+
+	function register() {
+	  return {
+	    type: _ActionTypes.AUTH_REGISTER
+	  };
+	}
+
+	function registerSuccess() {
+	  return {
+	    type: _ActionTypes.AUTH_REGISTER_SUCCESS
+	  };
+	}
+
+	function registerFailure(error) {
+	  return {
+	    type: _ActionTypes.AUTH_REGISTER_FAILURE,
+	    error: error
+	  };
+	}
+
 	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(240); if (makeExportsHot(module, __webpack_require__(104))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "authentication.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
 
@@ -29479,6 +29536,10 @@
 	var AUTH_LOGIN = exports.AUTH_LOGIN = "AUTH_LOGIN";
 	var AUTH_LOGIN_SUCCESS = exports.AUTH_LOGIN_SUCCESS = "AUTH_LOGIN_SUCCESS";
 	var AUTH_LOGIN_FAILURE = exports.AUTH_LOGIN_FAILURE = "AUTH_LOGIN_FAILURE";
+
+	var AUTH_REGISTER = exports.AUTH_REGISTER = "AUTH_REGISTER";
+	var AUTH_REGISTER_SUCCESS = exports.AUTH_REGISTER_SUCCESS = "AUTH_REGISTER_SUCCESS";
+	var AUTH_REGISTER_FAILURE = exports.AUTH_REGISTER_FAILURE = "AUTH_REGISTER_FAILURE";
 
 	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(240); if (makeExportsHot(module, __webpack_require__(104))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "ActionTypes.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
@@ -31046,7 +31107,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRedux = __webpack_require__(246);
+
 	var _components = __webpack_require__(238);
+
+	var _authentication = __webpack_require__(281);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31059,19 +31124,49 @@
 	var Register = function (_React$Component) {
 	    _inherits(Register, _React$Component);
 
-	    function Register() {
+	    function Register(props) {
 	        _classCallCheck(this, Register);
 
-	        return _possibleConstructorReturn(this, (Register.__proto__ || Object.getPrototypeOf(Register)).apply(this, arguments));
+	        var _this = _possibleConstructorReturn(this, (Register.__proto__ || Object.getPrototypeOf(Register)).call(this, props));
+
+	        _this.handleRegister = _this.handleRegister.bind(_this);
+	        return _this;
 	    }
 
 	    _createClass(Register, [{
+	        key: 'handleRegister',
+	        value: function handleRegister(id, pw) {
+	            var _this2 = this;
+
+	            return this.props.registerRequest(id, pw).then(function () {
+	                if (_this2.props.status === "SUCCESS") {
+	                    Materialize.toast('Success! Please log in.', 2000);
+	                    browserHistory.push('/login');
+	                    return true;
+	                } else {
+	                    /*
+	                        ERROR CODES:
+	                            1: BAD USERNAME
+	                            2: BAD PASSWORD
+	                            3: USERNAME EXISTS
+	                    */
+	                    var errorMessage = ['Invalid Username', 'Password is too short', 'Username already exists'];
+
+	                    var $toastContent = $('<span style="color: #FFB4BA">' + errorMessage[_this2.props.errorCode - 1] + '</span>');
+	                    Materialize.toast($toastContent, 2000);
+	                    return false;
+	                }
+	            });
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
 	                null,
-	                _react2.default.createElement(_components.Authentication, { mode: false })
+	                _react2.default.createElement(_components.Authentication, { mode: false,
+	                    onRegister: this.handleRegister
+	                })
 	            );
 	        }
 	    }]);
@@ -31079,7 +31174,22 @@
 	    return Register;
 	}(_react2.default.Component);
 
-	exports.default = Register;
+	var mapStateToProps = function mapStateToProps(state) {
+	    return {
+	        status: state.authentication.register.status,
+	        errorCode: state.authentication.register.error
+	    };
+	};
+
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	    return {
+	        registerRequest: function registerRequest(id, pw) {
+	            return dispatch((0, _authentication.registerRequest)(id, pw));
+	        }
+	    };
+	};
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Register);
 
 	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(240); if (makeExportsHot(module, __webpack_require__(104))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "Register.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
@@ -31140,6 +31250,10 @@
 	  login: {
 	    status: 'INIT'
 	  },
+	  register: {
+	    status: 'INIT',
+	    error: -1
+	  },
 	  status: {
 	    isLoggedIn: false,
 	    currentUser: ''
@@ -31171,6 +31285,26 @@
 	      return (0, _reactAddonsUpdate2.default)(state, {
 	        login: {
 	          status: { $set: 'FAILURE' }
+	        }
+	      });
+	    case types.AUTH_REGISTER:
+	      return (0, _reactAddonsUpdate2.default)(state, {
+	        register: {
+	          status: { $set: 'WAITING' },
+	          error: { $set: -1 }
+	        }
+	      });
+	    case types.AUTH_REGISTER_SUCCESS:
+	      return (0, _reactAddonsUpdate2.default)(state, {
+	        register: {
+	          status: { $set: 'SUCCESS' }
+	        }
+	      });
+	    case types.AUTH_REGISTER_FAILURE:
+	      return (0, _reactAddonsUpdate2.default)(state, {
+	        register: {
+	          status: { $set: 'FAILURE' },
+	          error: { $set: action.error }
 	        }
 	      });
 	    default:
