@@ -78,7 +78,7 @@ class App extends React.Component {
 
 const render = () => {
 
-    const appElement = document.getElementById('app');
+    const appElement = document.getElementById('root');
     ReactDOM.render(
         <App store={store}/>,
         appElement
