@@ -41,5 +41,27 @@ class SampleProvider extends Component {
   }
 }
 
+// :: HoC 를 사용
+function useSample(WrappedComponent) {
+  return function UseSample(props) {
+    return (
+      <SampleConsumer>
+        {
+          ({ state, actions }) => (
+            <WrappedComponent
+              value={state.value}
+              setValue={actions.setValue}
+            />
+          )
+        }
+      </SampleConsumer>
+    )
+  }
+}
+
 // 내보내준다.
-export { SampleProvider, SampleConsumer };
+export {
+  SampleProvider,
+  SampleConsumer,
+  useSample
+};

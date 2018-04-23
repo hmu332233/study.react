@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SampleConsumer } from '../contexts/sample';
+import { useSample } from '../contexts/sample';
 
 class Sends extends Component {
   constructor(props) {
@@ -55,4 +55,4 @@ const SendsContainer = () => (
 )
 
 // :: Sends 대신에 SendsContainer 를 내보내줌
-export default SendsContainer;
+export default useSample(Sends);
