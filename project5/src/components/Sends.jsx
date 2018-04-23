@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { SampleConsumer } from '../contexts/sample';
 
 class Sends extends Component {
   constructor(props) {
@@ -9,6 +10,13 @@ class Sends extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  
+    componentDidMount() {
+    // :: 초기 값 설정
+    this.setState({
+      input: this.props.value,
+    })
+  }
 
   handleChange(e) {
     this.setState({
@@ -18,7 +26,8 @@ class Sends extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // 구현 예정
+     // :: props로 받은 setValue 호출
+    this.props.setValue(this.state.input);
   }
 
   render() {
@@ -31,4 +40,19 @@ class Sends extends Component {
   }
 }
 
-export default Sends;
+// :: Consumer 를 사용하여 context 값을 전달해준 컨테이너 컴포넌트
+const SendsContainer = () => (
+  <SampleConsumer>
+    {
+      ({state, actions}) => (
+        <Sends 
+          value={state.value}
+          setValue={actions.setValue}
+        />
+      )
+    }
+  </SampleConsumer>
+)
+
+// :: Sends 대신에 SendsContainer 를 내보내줌
+export default SendsContainer;
