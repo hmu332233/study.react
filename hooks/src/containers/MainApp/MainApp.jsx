@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './MainApp.scss';
 
+import Counter from 'containers/Counter';
+
 class MainApp extends React.Component {
   constructor(props) {
     super(props);
@@ -11,7 +13,7 @@ class MainApp extends React.Component {
   render() {
     return (
       <div className={styles.MainApp}>
-        test
+        <Counter />
       </div>
     );
   }
