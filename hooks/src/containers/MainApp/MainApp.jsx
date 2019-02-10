@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './MainApp.scss';
 
 import Counter from 'containers/Counter';
+import Form from 'containers/Form';
 
 class MainApp extends React.Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class MainApp extends React.Component {
     return (
       <div className={styles.MainApp}>
         <Counter />
+        <Form />
       </div>
     );
   }
