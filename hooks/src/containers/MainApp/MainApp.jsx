@@ -5,6 +5,7 @@ import styles from './MainApp.scss';
 import CounterWithReducer from 'containers/CounterWithReducer';
 import Counter from 'containers/Counter';
 import Form from 'containers/Form';
+import UseHooksContainer from 'containers/UseHooksContainer';
 
 class MainApp extends React.Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class MainApp extends React.Component {
         <Counter />
         <Form />
         <CounterWithReducer />
+        <UseHooksContainer />
       </div>
     );
   }
