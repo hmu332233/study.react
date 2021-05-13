@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 
 import {
-  TodoDispatchContext,
-  TodoStateContext,
+  useTodoState,
+  useTodoDispatch,
 } from "./TodoContext";
 
 function TodoList() {
-  const todos = useContext(TodoStateContext);
-  const dispatch = useContext(TodoDispatchContext);
+  const todos = useTodoState();
+  const dispatch = useTodoDispatch();
 
   return (
     <div>

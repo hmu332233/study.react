@@ -1,16 +1,18 @@
 import React, { useContext } from 'react';
 
-import { TodoDispatchContext, TodoStateContext, TodoProvider } from './TodoContext';
+import { useTodoDispatch, useTodoNextId } from './TodoContext';
 
 function TodoCreate() {
-  const dispatch = useContext(TodoDispatchContext);
+  const nextId = useTodoNextId();
+  const dispatch = useTodoDispatch();
 
   const handleSubmit = (e) => {
     const formData = new FormData(e.target);
     const { todo } = Object.fromEntries(formData);
     
-    dispatch({ type: 'CREATE', payload: { id: Math.random(), text: todo } });
+    dispatch({ type: 'CREATE', payload: { id: nextId.current, text: todo } });
 
+    nextId.current += 1;
     e.preventDefault();
   };
 
