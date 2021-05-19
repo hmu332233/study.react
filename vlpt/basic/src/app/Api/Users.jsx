@@ -1,22 +1,23 @@
-import React, { useState, useEffect, useReducer } from 'react';
-import axios from 'axios';
+import React, { useState, useContext, useEffect, useReducer } from 'react';
 
-import useAsync from './useAsync';
+import { UsersProvider, UsersStateContext, UsersDispatchContext, getUsers  } from './UsersContext';
 
 import User from './User';
 
-const fetchUsers = () => {
-  return axios
-    .get('https://jsonplaceholder.typicode.com/users')
-    .then(res => res.data);
-}
 
 function Users() {
   const [userId, setUserId] = useState();
-  const [state, fetchData] = useAsync(fetchUsers, [], true);
 
+  const state = useContext(UsersStateContext);
+  const dispatch = useContext(UsersDispatchContext);
 
-  const { data: users, error, loading } = state;
+  const fetchUsers = () => getUsers(dispatch);
+
+  useEffect(() => {
+    fetchUsers();
+  }, [])
+
+  const { data: users, error, loading } = state.users;
 
   if (error) {
     return <div>에러!</div>;
@@ -35,11 +36,18 @@ function Users() {
           </li>
         ))}
       </ul>
-      <button onClick={fetchData}>불러오기</button>
+      <button onClick={fetchUsers}>불러오기</button>
       <User id={userId}/>
     </>
   );
-
 };
 
-export default Users;
+function UsersWithProvider() {
+  return (
+    <UsersProvider>
+      <Users />
+    </UsersProvider>
+  );
+}
+
+export default UsersWithProvider;

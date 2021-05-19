@@ -1,28 +1,25 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useContext, useEffect } from 'react';
 import axios from 'axios';
 
 // import useAsync from './useAsync';
-import { useAsync } from 'react-async';
-
-
-const fetchUser = ({ id }) => {
-  return axios
-    .get(`https://jsonplaceholder.typicode.com/users/${id}`)
-    .then(res => res.data);
-}
+// import { useAsync } from 'react-async';
+import { UsersStateContext, UsersDispatchContext, getUser } from './UsersContext';
 
 function User({ id }) {
-  const { data: user, error, isLoading } = useAsync({
-    promiseFn: fetchUser,
-    id,
-    watch: id,
-  });
+  const state = useContext(UsersStateContext);
+  const dispatch = useContext(UsersDispatchContext);
+
+  useEffect(() => {
+    getUser(dispatch, id);
+  }, [id])
+
+  const { data: user, loading, error } = state.user;
 
   if (error) {
     return <div>에러!</div>;
   }
 
-  if (isLoading) {
+  if (loading) {
     return <div>로딩 중..</div>;
   }
 
