@@ -11,7 +11,7 @@ const fetchUsers = () => {
 }
 
 function Users() {
-  const [state, fetchData] = useAsync(fetchUsers);
+  const [state, fetchData] = useAsync(fetchUsers, [], true);
 
 
   const { data: users, error, loading } = state;

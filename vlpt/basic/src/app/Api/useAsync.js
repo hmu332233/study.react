@@ -31,7 +31,7 @@ const initialState = {
   error: null,
 }
 
-const useAsync = (fetch, deps = []) => {
+const useAsync = (fetch, deps = [], skip = false) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const fetchData = () => {
@@ -46,6 +46,7 @@ const useAsync = (fetch, deps = []) => {
   };
 
   useEffect(() => {
+    if (skip) return;
     fetchData();
   }, deps);
 
