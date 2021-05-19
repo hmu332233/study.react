@@ -1,6 +1,9 @@
 import React, { createContext, useReducer, useContext } from 'react';
 import axios from 'axios';
 
+import * as api from './api';
+import { createAsyncDispatcher } from './asyncActionUtils';
+
 // UsersContext 에서 사용 할 기본 상태
 const initialState = {
   users: {
@@ -89,26 +92,5 @@ export function UsersProvider({ children }) {
   );
 };
 
-export function getUsers(dispatch) {
-  dispatch({ type: 'GET_USERS' });
-  axios
-    .get('https://jsonplaceholder.typicode.com/users')
-    .then(res => {
-      dispatch({ type: 'GET_USERS_SUCCESS', data: res.data });
-    })
-    .catch(err => {
-      dispatch({ type: 'GET_USERS_ERROR', error: err });
-    });
-};
-
-export function getUser(dispatch, id) {
-  dispatch({ type: 'GET_USER' });
-  axios
-    .get(`https://jsonplaceholder.typicode.com/users/${id}`)
-    .then(res => {
-      dispatch({ type: 'GET_USER_SUCCESS', data: res.data });
-    })
-    .catch(err => {
-      dispatch({ type: 'GET_USER_ERROR', error: err });
-    });
-};
+export const getUsers = createAsyncDispatcher('GET_USERS', api.getUsers);
+export const getUser = createAsyncDispatcher('GET_USER', api.getUser);
