@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import useAsync from './useAsync';
 
+import User from './User';
 
 const fetchUsers = () => {
   return axios
@@ -11,6 +12,7 @@ const fetchUsers = () => {
 }
 
 function Users() {
+  const [userId, setUserId] = useState();
   const [state, fetchData] = useAsync(fetchUsers, [], true);
 
 
@@ -26,14 +28,15 @@ function Users() {
 
   return (
     <>
-    <ul>
-      {users.map(user => (
-        <li key={user.id}>
-          {user.username} ({user.name})
-        </li>
-      ))}
-    </ul>
-    <button onClick={fetchData}>불러오기</button>
+      <ul>
+        {users.map(user => (
+          <li key={user.id} onClick={() => setUserId(user.id)}>
+            {user.username} ({user.name})
+          </li>
+        ))}
+      </ul>
+      <button onClick={fetchData}>불러오기</button>
+      <User id={userId}/>
     </>
   );
 
