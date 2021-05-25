@@ -1,5 +1,6 @@
 import { combineReducers , configureStore } from '@reduxjs/toolkit';
 import counterReducer from './modules';
+import logger from './middlewares/logger';
 
 
 const rootReducer = combineReducers({
@@ -7,6 +8,7 @@ const rootReducer = combineReducers({
 })
 
 const store = configureStore({
+  middleware: [logger],
   reducer: rootReducer,
 });
 
