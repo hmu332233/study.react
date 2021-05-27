@@ -73,3 +73,29 @@ const color: Color = 'red';
 const colors: Color[] = ['red', 'orange'];
 
 // 클래스와 관련된 타입의 경우엔 interface 를 사용하는게 좋고, 일반 객체의 타입의 경우엔 그냥 type을 사용해도 무방합니다
+
+
+class Queue<T> {
+  list: T[] = [];
+
+  get length(): number {
+    return this.list.length;
+  }
+
+  enqueue(item: T) {
+    this.list.push(item);
+  }
+
+  dequeue() {
+    return this.list.shift();
+  }
+}
+
+
+const stringQueue = new Queue<string>();
+
+stringQueue.enqueue('a');
+stringQueue.enqueue('b');
+stringQueue.enqueue('c');
+stringQueue.dequeue();
+console.log(stringQueue.length, stringQueue.list);
