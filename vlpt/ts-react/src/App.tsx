@@ -7,6 +7,9 @@ import Counter from './components/Counter';
 import CounterWithReducer from './components/CounterWithReducer';
 import MyForm from './components/MyForm';
 import ReducerSample from './components/ReducerSample';
+import ReducerSampleWithContext from './components/ReducerSampleWithContext';
+
+import { SampleProvider } from './components/SampleContext';
 
 function App() {
   const handleClick = (name: string) => {
@@ -23,6 +26,9 @@ function App() {
       <MyForm onSubmit={handleSubmit} />
       <CounterWithReducer />
       <ReducerSample />
+      <SampleProvider>
+        <ReducerSampleWithContext />
+      </SampleProvider>
     </div>
   );
 }
