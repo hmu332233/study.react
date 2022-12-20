@@ -2,18 +2,19 @@ import {
   useQuery,
 
 } from "@tanstack/react-query";
-const fakeFetch = () => new Promise(resolve => setTimeout(() => resolve(['a', 'b', 'c']), 1000));
+const fakeFetch = (delay) => new Promise(resolve => setTimeout(() => resolve(['a', 'b', 'c']), delay));
 
-function useFakeFetch() {
+function useFakeFetch(delay = 1000) {
   return useQuery({
-    queryKey: ['fake'],
-    queryFn: fakeFetch,
-    initialData: [],
+    queryKey: ['fake', delay],
+    queryFn: () => fakeFetch(delay),
+    // initialData: [],
+    suspense: true,
   });
 }
 
-function List() {
-  const { data: items } = useFakeFetch();
+function List({ delay }) {
+  const { data: items } = useFakeFetch(delay);
 
   return (
     <ul>

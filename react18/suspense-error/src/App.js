@@ -2,8 +2,6 @@ import { Suspense } from 'react';
 import List from './List';
 
 import {
-  useQuery,
-  useQueryClient,
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
@@ -16,8 +14,11 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <div className="App">
         테스트
-        <Suspense>
-          <List />
+        <Suspense fallback={<div>로딩 중..</div>}>
+          <List delay={1000} />
+        </Suspense>
+        <Suspense fallback={<div>로딩 중..</div>}>
+          <List delay={3000} />
         </Suspense>
       </div>
       <ReactQueryDevtools initialIsOpen />
