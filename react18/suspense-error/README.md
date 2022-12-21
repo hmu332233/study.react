@@ -16,8 +16,10 @@
 
 ## 레퍼런스
 
+https://github.com/bvaughn/react-error-boundary
 https://tech.kakaopay.com/post/react-query-2/
 https://maxkim-j.github.io/posts/suspense-argibraic-effect/
+https://sergiodxa.com/articles/react/suspense-image-loading
 
 
 **테스트해보면서 알게된 것 메모**
