@@ -1,9 +1,9 @@
 import { Suspense } from "react";
 import ErrorBoundary from "./ErrorBoundary";
 
-function AsyncBoundary({ pendingFallback, children, ...props }) {
+function AsyncBoundary({ pendingFallback, rejectFallback, children, ...props }) {
   return (
-    <ErrorBoundary {...props}>
+    <ErrorBoundary fallback={rejectFallback} {...props}>
       <Suspense fallback={pendingFallback}>
         {children}
       </Suspense>

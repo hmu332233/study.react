@@ -1,7 +1,7 @@
 import { useState, Suspense } from 'react';
-import List from '../components/List';
-import ErrorBoundary from '../components/ErrorBoundary';
-import AsyncBoundary from '../components/AsyncBoundary';
+import List from './components/List';
+import ErrorBoundary from './components/ErrorBoundary';
+import AsyncBoundary from './components/AsyncBoundary';
 
 import {
   QueryClient,
@@ -40,12 +40,15 @@ function App() {
             <List delay={2000} fail={useFail} />
           </Suspense>
         </ErrorBoundary>
-        <AsyncBoundary fallbackRender={({ reset }) => (
-          <div>
-            에러 발생2
-            <button onClick={() => { setUseFail(false); reset(); }}>에러 리셋2</button>
-          </div>
-        )}>
+        <AsyncBoundary
+          pendingFallback={<div>로딩 중..</div>}
+          fallbackRender={({ reset }) => (
+            <div>
+              에러 발생2
+              <button onClick={() => { setUseFail(false); reset(); }}>에러 리셋2</button>
+            </div>
+          )}
+        >
           <List delay={3000} fail={useFail} />
         </AsyncBoundary>
       </div>
