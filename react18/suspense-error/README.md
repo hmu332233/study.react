@@ -3,7 +3,7 @@
 ## 해보고자하는 것
 
 1. react의 suspense와 error boundary를 react-query를 이용해 사용해보기 - App1
-2. 위의 코드에 https://github.com/bvaughn/react-error-boundary 사용해보기
+2. 위의 코드에 https://github.com/bvaughn/react-error-boundary 사용해보기 - App1 AsyncBoundary2
 3. react-query를 빼고 suspense가 지원되는 fetch 함수 만들어서 사용해보기
 4. <Suspense />를 빼고 직접 <Suspense />를 구현해서 사용해보기
 5. data fetch 외에 다른 요소들 (이미지등)에 suspense를 적용해보기
