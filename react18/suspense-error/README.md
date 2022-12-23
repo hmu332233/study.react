@@ -25,4 +25,6 @@ https://sergiodxa.com/articles/react/suspense-image-loading
 
 **테스트해보면서 알게된 것 메모**
 
-- initialData와 suspense는 공존 불가능 <- 당연한 것 같기도..
+- react-query의 initialData와 suspense는 공존 불가능 <- 당연한 것 같기도..
+
+- react는 어떻게 state가 아닌 data fetch의 상태를 추적하는가? 아직 래퍼런스의 글을 완벽하게 이해하지 못함

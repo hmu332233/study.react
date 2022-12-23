@@ -24,25 +24,25 @@ function App() {
   const [count, setCount] = useState(0);
   console.log('rerender-App')
   return (
-    <QueryClientProvider client={queryClient}>
+
+    <div className="App">
       <button onClick={() => setCount(v => v + 1)}>{count}</button>
-      <div className="App">
-        테스트
-        <AsyncBoundary
-          onError={(error, info) => console.log('lib.onError', error, info)}
-          pendingFallback={<div>로딩 중..</div>}
-          fallbackRender={({ resetErrorBoundary }) => (
-            <div>
-              에러 발생
-              <button onClick={() => { setUseFail(false); resetErrorBoundary(); }}>에러 리셋</button>
-            </div>
-          )}
-        >
-          <List delay={1000} fail={useFail} />
-        </AsyncBoundary>
-      </div>
-      <ReactQueryDevtools initialIsOpen />
-    </QueryClientProvider>
+      테스트
+      
+        {/* <List delay={1000} fail={useFail} /> */}
+      <AsyncBoundary
+        onError={(error, info) => console.log('lib.onError', error, info)}
+        pendingFallback={<div>로딩 중..</div>}
+        fallbackRender={({ resetErrorBoundary }) => (
+          <div>
+            에러 발생
+            <button onClick={() => { setUseFail(false); resetErrorBoundary(); }}>에러 리셋</button>
+          </div>
+        )}
+      >
+        <List delay={1000} fail={useFail} />
+      </AsyncBoundary>
+    </div>
   );
 }
 

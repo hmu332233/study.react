@@ -4,12 +4,12 @@ const STATUS = {
   ERROR: 'error',
 }
 
-export const wrapPromise = (promise) => {
+export const wrapPromise = (promise, ...params) => {
   console.log('wrapPromise')
   let status = STATUS.PENDING; // 최초의 상태
   let results;
 
-  const suspender = promise
+  const suspender = promise(...params)
     .then((r) => {
       status = STATUS.SUCCESS; // 성공으로 완결시 success로
       results = r;
