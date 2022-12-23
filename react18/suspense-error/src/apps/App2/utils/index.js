@@ -4,7 +4,8 @@ const STATUS = {
   ERROR: 'error',
 }
 
-export const wrapPromise(promise) {
+export const wrapPromise = (promise) => {
+  console.log('wrapPromise')
   let status = STATUS.PENDING; // 최초의 상태
   let results;
 
@@ -21,10 +22,13 @@ export const wrapPromise(promise) {
   return {
     read() {
       if (status === STATUS.PENDING) {
-        throw suspender; // 펜딩 프로미스를 throw 하면 Suspense의 Fallback UI를 보여준다
+        console.log('pending!')
+        throw suspender; // 펜딩 promise를 throw 하면 Suspense의 Fallback UI를 보여준다
       } else if (status === STATUS.ERROR) {
+        console.log('error!')
         throw results; // Error을 throw하는 경우 ErrorBoundary의 Fallback UI를 보여준다
       } else if (status === STATUS.SUCCESS) {
+        console.log('success!')
         return results; // 결과값을 리턴하는 경우 성공 UI를 보여준다
       }
     }

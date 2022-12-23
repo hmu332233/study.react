@@ -21,10 +21,11 @@ function App() {
 
   // 에러를 재현하기 위해 억지 state
   const [useFail, setUseFail] = useState(true);
-
-
+  const [count, setCount] = useState(0);
+  console.log('rerender-App')
   return (
     <QueryClientProvider client={queryClient}>
+      <button onClick={() => setCount(v => v + 1)}>{count}</button>
       <div className="App">
         테스트
         <AsyncBoundary
