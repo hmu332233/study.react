@@ -1,23 +1,27 @@
+import { useState, useEffect  } from 'react';
 import { wrapPromise } from '../utils'
 
 const fakeFetch = (delay = 1000, fail) => new Promise((resolve, reject) => setTimeout(() => fail ? reject(new Error('fail!!')) : resolve(['a', 'b', 'c']), delay))
 
-const wrappedFakeFetch = wrapPromise(fakeFetch, 3000, false);
-
-// TODO: delay, fail을 인자로 받으면서도 wrapPromise가 가능한 형태로 만들기
 function useFakeFetch(delay, fail) {
-  return wrappedFakeFetch.read();
+  const [data, setData] = useState();
+  useEffect(() => {
+    const data = wrapPromise(fakeFetch, delay, fail);
+    setData(data);
+  }, []);
+  
+  return data;
 }
 
 let count = 0;
 function List({ delay, fail }) {
   console.log('re-render', count++)
-  useFakeFetch(delay, fail);
+  const data = useFakeFetch(delay, fail);
 
   return (
     <ul>
       <li>테스트 코드</li>
-      {/* {data.read()} */}
+      {data?.read()}
       {/* {items.map(item => (
         <li key={item}>{item}</li>
       ))} */}

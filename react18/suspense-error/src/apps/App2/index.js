@@ -3,19 +3,7 @@ import List from './components/List';
 import AsyncBoundary from './components/AsyncBoundary';
 
 
-import {
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: 0,
-    }
-  }
-});
+import MySuspense from './components/MySuspense';
 
 function App() {
 
@@ -42,6 +30,11 @@ function App() {
       >
         <List delay={1000} fail={useFail} />
       </AsyncBoundary>
+      {/* <MySuspense fallback={<div>로딩 중..</div>}> */}
+      {/* <ErrorBoundary fallback={<div>로딩 중...</div>}>
+        <List delay={1000} fail={useFail} />
+      </ErrorBoundary> */}
+      {/* </MySuspense> */}
     </div>
   );
 }
