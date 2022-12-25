@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import List from './components/List';
 import AsyncBoundary from './components/AsyncBoundary';
-
-
 import MySuspense from './components/MySuspense';
+import { ErrorBoundary } from 'react-error-boundary'
+
+
 
 function App() {
 
@@ -30,11 +31,9 @@ function App() {
       >
         <List delay={1000} fail={useFail} />
       </AsyncBoundary>
-      {/* <MySuspense fallback={<div>로딩 중..</div>}> */}
-      {/* <ErrorBoundary fallback={<div>로딩 중...</div>}>
-        <List delay={1000} fail={useFail} />
-      </ErrorBoundary> */}
-      {/* </MySuspense> */}
+      <MySuspense fallback={<div>로딩 중.. custom</div>}>
+        <List delay={3000} />    
+      </MySuspense>
     </div>
   );
 }

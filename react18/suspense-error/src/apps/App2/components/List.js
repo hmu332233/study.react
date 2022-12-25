@@ -20,7 +20,6 @@ function List({ delay, fail }) {
 
   return (
     <ul>
-      <li>테스트 코드</li>
       {data?.read()}
       {/* {items.map(item => (
         <li key={item}>{item}</li>
