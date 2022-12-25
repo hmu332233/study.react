@@ -4,9 +4,9 @@
 
 1. react의 suspense와 error boundary를 react-query를 이용해 사용해보기 - App1
 2. 위의 코드에 https://github.com/bvaughn/react-error-boundary 사용해보기 - App1 AsyncBoundary2
-3. react-query를 빼고 suspense가 지원되는 fetch 함수 만들어서 사용해보기 - App2
-4. <Suspense />를 빼고 직접 <Suspense />를 구현해서 사용해보기
-5. data fetch 외에 다른 요소들 (이미지등)에 suspense를 적용해보기
+3. react-query를 빼고 suspense가 지원되는 fetch 함수 만들어서 사용해보기 - App2 wrapPromise, useFakeFetch
+4. <Suspense />를 빼고 직접 <Suspense />를 구현해서 사용해보기 - 완벽하게 직접 구현하는 것은 안되고, error boundary를 활용하여 꼼수처럼 구현은 가능했음 App2 wrapPromise
+5. data fetch 외에 다른 요소들 (이미지등)에 suspense를 적용해보기 - App3
 
 ## 기대 효과
 

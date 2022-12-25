@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App1 from './apps/App1';
 import App2 from './apps/App2'; // suspense 직접 구현 버전
+import App3 from './apps/App3'; // suspense image 구현 버전
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/* <App1 /> */}
-    <App2 />
+    {/* <App2 /> */}
+    <App3 />
   </React.StrictMode>
 );
 
